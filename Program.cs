@@ -8,17 +8,14 @@ namespace Method1
 {
     class Program
     {
-        public static void DeleteValue(int[] array,int Index)
+        public static void DeleteValue(int[] array,int InputIndex)
         {
-            //Console.WriteLine(array.Length);
-            //Console.WriteLine(Index);
+            int Index = InputIndex - 1;
             if(Index <0 || Index >= array.Length)
             {
                 Console.WriteLine("Invalid Input");
             }
             int[] NewArray = new int[array.Length];
-
-            //Console.WriteLine(NewArray.Length);
 
             for (int i = 0; i < array.Length; i++)
             {
@@ -35,8 +32,9 @@ namespace Method1
                     NewArray[i] = array[i];
                 }
                 else { NewArray[i] = 0; }
-                Console.WriteLine($"Index [{i}]: \n Old = {array[i]} - New = {NewArray[i]}");
+                Console.WriteLine($"Index [{i+1}]: \n Old = {array[i]} - New = {NewArray[i]}");
             }
+            Console.WriteLine("==========================");
 
             Console.Write("Old Array: ");
             for (int i = 0; i < array.Length; i++)
@@ -51,19 +49,22 @@ namespace Method1
                 Console.Write(NewArray[i] + " ");
             }
             Console.WriteLine();
+            Console.WriteLine("==========================");
         }
         static void Main(string[] args)
         {
+            Console.Write("Input Array Length: ");
+            int Length = Int32.Parse(Console.ReadLine());
+            int[] Arr01 = new int[Length];
+            for (int i =0; i < Length; i++)
+            {
+                Console.Write($"Input Value {i+1} : ");
+                Arr01[i] = Int32.Parse(Console.ReadLine());
+            }
+            Console.WriteLine("==========================");
+            
             Console.Write("Input Index: ");
             int Index = Int32.Parse(Console.ReadLine());
-            int[] Arr01 = new int[10];
-            Arr01.SetValue(10, 0);
-            Arr01.SetValue(4, 1);
-            Arr01.SetValue(6, 2);
-            Arr01.SetValue(7, 3);
-            Arr01.SetValue(8, 4);
-            Arr01.SetValue(6, 5);
-            
             DeleteValue(Arr01, Index);
         }
     }
